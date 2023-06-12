@@ -40,20 +40,29 @@ public class FileEncryptor {
 		char[] messageSeparate = message.toCharArray();
 		for (int j = 0; j < messageSeparate.length; j++) {
 			if (messageSeparate[j] != 32) {
-
-				switch(messageSeparate[j] + key) {
-				case (messageSeparate[j] + key > 96):
-					
+				if (Character.isUpperCase(messageSeparate[j])) {
+					if (messageSeparate[j] + 4 < 87) {
+						messageSeparate[j] += messageSeparate[j] + 4;
+					} else {
+						messageSeparate[j] += messageSeparate[j] - 22;
+					}
+				}
+				if (Character.isLowerCase(messageSeparate[j])) {
+					if (messageSeparate[j] + 4 < 119) {
+						messageSeparate[j] += messageSeparate[j] + 4;
+					} else {
+						messageSeparate[j] += messageSeparate[j] - 22;
+					}
 				}
 				
 			} else {
-				outc.append(' ');
+				
 			}
-
-			System.out.println(outc.toString());
+			
+			String outcome = outc.toString();
 			try {
 				FileWriter fw = new FileWriter("src/_02_File_Encrypt_Decrypt/text.txt");
-				fw.write(outc.toString());
+				fw.write(outcome);
 				fw.close();
 			} catch (IOException e) {
 				e.printStackTrace();
