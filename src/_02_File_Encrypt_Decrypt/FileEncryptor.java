@@ -36,29 +36,41 @@ public class FileEncryptor {
 		int key = Integer.parseInt(wordKey);
 
 		StringBuilder outc = new StringBuilder();
+		int temp = 0;
 
 		char[] messageSeparate = message.toCharArray();
 		for (int j = 0; j < messageSeparate.length; j++) {
-			if (messageSeparate[j] != 32) {
+			if (messageSeparate[j] != ' ') {
 				if (Character.isUpperCase(messageSeparate[j])) {
-					if (messageSeparate[j] + 4 < 87) {
-						messageSeparate[j] += messageSeparate[j] + 4;
+					if (messageSeparate[j] + key < 'Z') {
+					
+						messageSeparate[j] += key;
+						outc.append(messageSeparate[j]);
 					} else {
-						messageSeparate[j] += messageSeparate[j] - 22;
+							temp = 26 - key;
+						messageSeparate[j] -= temp;
+						outc.append(messageSeparate[j]);
+
 					}
 				}
 				if (Character.isLowerCase(messageSeparate[j])) {
-					if (messageSeparate[j] + 4 < 119) {
-						messageSeparate[j] += messageSeparate[j] + 4;
+					if (messageSeparate[j] + key < 'z') {
+						messageSeparate[j] += key;
+						outc.append(messageSeparate[j]);
+
 					} else {
-						messageSeparate[j] += messageSeparate[j] - 22;
+						temp = 26 - key;
+						messageSeparate[j] -= temp;
+						outc.append(messageSeparate[j]);
+
 					}
 				}
 				
 			} else {
+				outc.append(' ');
 				
 			}
-			
+		}
 			String outcome = outc.toString();
 			try {
 				FileWriter fw = new FileWriter("src/_02_File_Encrypt_Decrypt/text.txt");
@@ -68,7 +80,7 @@ public class FileEncryptor {
 				e.printStackTrace();
 			}
 
-		}
+		
 
 	}
 }
