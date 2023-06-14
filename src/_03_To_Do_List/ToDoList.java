@@ -47,7 +47,10 @@ public class ToDoList implements ActionListener {
 	JButton load = new JButton("Load List");
 
 	public static void main(String[] args) {
-		new ToDoList().fileLoader();
+		ToDoList list = new ToDoList();
+		list.fileLoader();
+		list.setup();
+		
 	}
 	void fileLoader() {
 		try {
