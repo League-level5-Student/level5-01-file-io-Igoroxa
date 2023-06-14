@@ -39,9 +39,10 @@ public class DirectoryIterator {
 				fileChoose(f);
 				if (f.getName().contains(".java")) {
 					try {
-						FileWriter fw = new FileWriter(f.getName());
+						System.out.println("works");
+						FileWriter fw = new FileWriter(f.getAbsolutePath(), true);
 
-						fw.write("\nCopyright © 2023 Igor Aliasiuk");
+						fw.write("\n//Copyright © 2023 Igor Aliasiuk");
 
 						fw.close();
 					} catch (IOException e) {
@@ -54,3 +55,5 @@ public class DirectoryIterator {
 	}
 
 }
+
+//Copyright © 2023 Igor Aliasiuk

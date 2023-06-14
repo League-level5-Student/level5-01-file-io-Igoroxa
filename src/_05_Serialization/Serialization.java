@@ -65,3 +65,5 @@ public class Serialization {
 		}
 	}
 }
+
+//Copyright © 2023 Igor Aliasiuk

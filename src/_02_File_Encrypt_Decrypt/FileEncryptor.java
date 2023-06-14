@@ -84,3 +84,5 @@ public class FileEncryptor {
 
 	}
 }
+
+//Copyright © 2023 Igor Aliasiuk
